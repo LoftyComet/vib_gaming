@@ -4,14 +4,12 @@
     "module": "ESNext",
     "moduleResolution": "bundler",
     "strict": true,
-    "jsx": "react-jsx",
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "declaration": true,
-    "declarationMap": true,
-    "outDir": "dist",
-    "rootDir": "src",
-    "composite": true
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true
   },
   "include": ["src"]
 }

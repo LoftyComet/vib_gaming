@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "turbo dev",
     "dev:portal": "turbo dev --filter=portal",
-    "dev:backend": "cd backend && venv/bin/flask run --port 5001",
+    "dev:backend": "cd backend && FLASK_APP=run:app venv/bin/flask run --port 5001",
     "build": "turbo build",
     "build:portal": "turbo build --filter=portal",
     "build:games": "turbo build --filter=./apps/games/*",
