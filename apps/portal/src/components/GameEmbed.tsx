@@ -55,10 +55,19 @@ export default function GameEmbed({ gameUrl, gameId, fullscreen = false }: GameE
     iframeRef.current?.contentWindow?.postMessage({ type }, '*');
   }
 
+  // Auto-focus the iframe so keyboard events reach the game
+  useEffect(() => {
+    // Small delay to ensure iframe is loaded
+    const timer = setTimeout(() => {
+      iframeRef.current?.focus();
+    }, 300);
+    return () => clearTimeout(timer);
+  }, [gameUrl]);
+
   return (
-    <div className={`flex flex-col ${fullscreen ? 'fixed inset-0 z-50 bg-black' : ''}`}>
+    <div className={`flex flex-col ${fullscreen ? 'fixed inset-0 z-50 bg-black' : 'h-full'}`}>
       {/* Controls */}
-      <div className="flex items-center justify-between px-4 py-2 bg-gray-800 border-b border-gray-700">
+      <div className="flex items-center justify-between px-4 py-2 bg-gray-800 border-b border-gray-700 shrink-0">
         <div className="flex gap-2">
           <button
             onClick={() => sendCommand('PAUSE')}
@@ -94,6 +103,7 @@ export default function GameEmbed({ gameUrl, gameId, fullscreen = false }: GameE
           ref={iframeRef}
           src={gameUrl}
           className="w-full h-full border-0"
+          style={{ outline: 'none' }}
           title="Game"
           allow="autoplay"
         />
