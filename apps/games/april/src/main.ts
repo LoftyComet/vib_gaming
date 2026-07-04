@@ -11,6 +11,7 @@ canvas.width = GAME_CONFIG.width;
 canvas.height = GAME_CONFIG.height;
 
 const scene = new MyGameScene(canvas);
+scene.enter();
 
 const loop = new GameLoop(
   (dt) => scene.update(dt),
@@ -18,4 +19,4 @@ const loop = new GameLoop(
 );
 
 loop.start();
-console.log('🎮 April 的游戏已启动！');
+console.log('🌾 四月物语已启动 — WASD 移动，E 交互');

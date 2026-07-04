@@ -1,0 +1,5 @@
+# Accidental tsc output — Vite uses .ts sources only
+src/**/*.js
+src/**/*.d.ts
+src/**/*.js.map
+src/**/*.d.ts.map
