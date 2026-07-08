@@ -14,6 +14,17 @@ export interface WaveConfig {
     damage: number;
     xpValue: number;
     color: string;
+    size?: number;
+    enemyType?: string;
+    // 射手专用
+    shootCooldown?: number;
+    projectileSpeed?: number;
+    // 冲刺者专用
+    chargeCooldown?: number;
+    chargeSpeed?: number;
+    // 坦克专用
+    splitsOnDeath?: boolean;
+    splitCount?: number;
   };
   count: number;
   interval: number; // seconds between individual spawns
@@ -92,8 +103,19 @@ export class EnemySpawnSystem extends System {
     world.addComponent(entity, new Transform(x, y));
     world.addComponent(entity, new Velocity(0, 0));
     world.addComponent(entity, new Health(cfg.health, cfg.health));
-    world.addComponent(entity, new Enemy(cfg.xpValue, cfg.damage, cfg.speed));
-    world.addComponent(entity, new Sprite(16, 16, cfg.color));
-    world.addComponent(entity, new Collider(14, 14, 8));
+    world.addComponent(entity, new Enemy(
+      cfg.xpValue, cfg.damage, cfg.speed,
+      cfg.enemyType ?? 'chaser',
+      cfg.shootCooldown ?? 2.0,
+      0,
+      cfg.projectileSpeed ?? 150,
+      cfg.chargeCooldown ?? 2.5,
+      0,
+      cfg.chargeSpeed ?? 300,
+      cfg.splitsOnDeath ?? false,
+      cfg.splitCount ?? 2,
+    ));
+    world.addComponent(entity, new Sprite(cfg.size ?? 16, cfg.size ?? 16, cfg.color));
+    world.addComponent(entity, new Collider(cfg.size ?? 14, cfg.size ?? 14, (cfg.size ?? 14) / 2));
   }
 }

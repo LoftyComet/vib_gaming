@@ -17,6 +17,9 @@ export class AutoAttackSystem extends System {
     const attackers = world.query(Transform, Weapon);
 
     for (const [entity, transform, weapon] of attackers) {
+      // 只处理投射物类型的武器（环绕/火焰/连锁由各自系统处理）
+      if (weapon.weaponType !== 'projectile') continue;
+
       // Tick cooldown
       weapon.timer = Math.max(0, weapon.timer - dt);
 

@@ -36,6 +36,9 @@ export { CollisionSystem } from './systems/CollisionSystem';
 export { DamageSystem, setupDamageHandler } from './systems/DamageSystem';
 export { XPSystem } from './systems/XPSystem';
 export { RenderSystem } from './systems/RenderSystem';
+export { OrbitalSystem } from './systems/OrbitalSystem';
+export { FlameThrowerSystem } from './systems/FlameThrowerSystem';
+export { ChainLightningSystem } from './systems/ChainLightningSystem';
 
 // Components
 export { Transform } from './components/Transform';
@@ -50,3 +53,6 @@ export { Experience } from './components/Experience';
 export { Sprite } from './components/Sprite';
 export { Lifetime } from './components/Lifetime';
 export { Pickup } from './components/Pickup';
+export { Orbital } from './components/Orbital';
+export { FlameWeapon } from './components/FlameWeapon';
+export { ChainWeapon } from './components/ChainWeapon';

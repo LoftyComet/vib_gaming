@@ -2,6 +2,8 @@ import type { Component } from '../ecs/Component';
 
 export class Weapon implements Component {
   public timer = 0;
+  /** 武器类型：projectile | orbit | flame | chain */
+  public weaponType: string = 'projectile';
 
   constructor(
     public cooldown: number, // seconds between attacks
