@@ -31,6 +31,19 @@ importers:
         specifier: ^6.0.0
         version: 6.4.3
 
+  apps/games/april:
+    dependencies:
+      '@vib/engine':
+        specifier: workspace:*
+        version: link:../../../packages/engine
+    devDependencies:
+      typescript:
+        specifier: ^5.7.0
+        version: 5.9.3
+      vite:
+        specifier: ^6.0.0
+        version: 6.4.3
+
   apps/portal:
     dependencies:
       '@vib/shared-ui':
